@@ -3,9 +3,13 @@
 }
 
 body {
-    background-color: #333;
+    background-color: #181717;
     color: #fff;
     padding: 1rem;
+}
+h1{
+    display: flex;
+    justify-content: center;
 }
 
 form {

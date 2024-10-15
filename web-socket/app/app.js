@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://localhost:4000")
+const socket = io("ws://localhost:3500")
 
 function sendMessage(e) {
 
@@ -7,7 +7,7 @@ function sendMessage(e) {
     const input = document.querySelector('input')
     if(input.value)
     {
-        socket.send(input.value)
+        socket.emit('message',input.value)
         input.value=""
         //clearing the input
     }
@@ -17,7 +17,9 @@ function sendMessage(e) {
 
 document.querySelector("form").addEventListener('submit',sendMessage)
 
-socket.addEventListener("message",({data})=>{
+
+//listen for message
+socket.on("message",(data)=>{
     const li = document.createElement("li")
     li.textContent=data
     document.querySelector('ul').appendChild(li)
